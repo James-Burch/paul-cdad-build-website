@@ -1,17 +1,6 @@
 import React from 'react';
-import {
-  useScrollAnimation,
-  useStaggeredAnimation,
-} from '../hooks/useScrollAnimation';
 
 const About = () => {
-  const [headerRef, isHeaderVisible] = useScrollAnimation(0.2);
-  const [servicesRef, visibleServices] = useStaggeredAnimation(
-    new Array(6),
-    150
-  );
-  const [whyUsRef, isWhyUsVisible] = useScrollAnimation(0.3);
-
   const services = [
     {
       icon: (
@@ -119,12 +108,7 @@ const About = () => {
     <section id="about" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div
-          ref={headerRef}
-          className={`text-center mb-16 ${
-            isHeaderVisible ? 'animate-fadeIn' : 'opacity-0'
-          }`}
-        >
+        <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Our Services
           </h2>
@@ -136,16 +120,11 @@ const About = () => {
         </div>
 
         {/* Services Grid */}
-        <div
-          ref={servicesRef}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <div
               key={index}
-              className={`bg-gray-50 rounded-lg p-6 hover:shadow-lg transition-all duration-300 hover-lift hover:bg-white group ${
-                visibleServices.includes(index) ? 'animate-fadeIn' : 'opacity-0'
-              }`}
+              className="bg-gray-50 rounded-lg p-6 hover:shadow-lg transition-all duration-300 hover-lift hover:bg-white group"
             >
               <div className="text-primary-orange mb-4 group-hover:scale-110 transition-transform duration-300">
                 {service.icon}
@@ -161,12 +140,7 @@ const About = () => {
         </div>
 
         {/* Why Choose Us Section */}
-        <div
-          ref={whyUsRef}
-          className={`mt-20 bg-primary-orange rounded-2xl p-8 md:p-12 text-white hover-lift transition-all duration-500 ${
-            isWhyUsVisible ? 'animate-scaleIn' : 'opacity-0'
-          }`}
-        >
+        <div className="mt-20 bg-primary-orange rounded-2xl p-8 md:p-12 text-white hover-lift transition-all duration-500">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div>
               <h3 className="text-2xl md:text-3xl font-bold mb-6">
