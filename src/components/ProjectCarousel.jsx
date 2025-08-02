@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const ProjectCarousel = () => {
+  const [headerRef, isHeaderVisible] = useScrollAnimation(0.2);
+  const [carouselRef, isCarouselVisible] = useScrollAnimation(0.3);
+  const [ctaRef, isCtaVisible] = useScrollAnimation(0.4);
+
   // Placeholder project data - you'll replace with real images
   const projects = [
     {
@@ -74,7 +79,12 @@ const ProjectCarousel = () => {
     <section id="projects" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div
+          ref={headerRef}
+          className={`text-center mb-16 ${
+            isHeaderVisible ? 'animate-fadeIn' : 'opacity-0'
+          }`}
+        >
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Our Recent Projects
           </h2>
@@ -85,7 +95,12 @@ const ProjectCarousel = () => {
         </div>
 
         {/* Carousel */}
-        <div className="relative">
+        <div
+          ref={carouselRef}
+          className={`relative ${
+            isCarouselVisible ? 'animate-scaleIn' : 'opacity-0'
+          }`}
+        >
           {/* Main Image Display */}
           <div className="relative h-96 md:h-[500px] mb-8 overflow-hidden rounded-lg bg-gray-200">
             <div
