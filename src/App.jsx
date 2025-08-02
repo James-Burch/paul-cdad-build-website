@@ -1,4 +1,5 @@
 import React from 'react';
+import './styles/animations.css';
 
 // Import components (we'll create these next)
 import Header from './components/Header';
